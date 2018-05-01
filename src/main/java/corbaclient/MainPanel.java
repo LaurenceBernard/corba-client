@@ -14,14 +14,16 @@ import javax.swing.*;
 public class MainPanel extends javax.swing.JPanel {
 
     private LetterReceiver letterReceiver;
+    private short wordLength;
     /**
      * Creates new form MainPanel
      */
     public MainPanel() {
-        this(null);
+        this(null, (short)5);
     }
 
-    public MainPanel(LetterReceiver letterReceiver){
+    public MainPanel(LetterReceiver letterReceiver, short wordLength){
+        this.wordLength = wordLength;
         initComponents();
         numberPanel.setLetterReceiver(letterReceiver);
     }
@@ -36,7 +38,7 @@ public class MainPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         numberPanel = new corbaclient.NumberPanel();
-        guessPanel = new corbaclient.GuessPanel();
+        guessPanel = new corbaclient.GuessPanel(wordLength);
         lblPic = new javax.swing.JLabel();
 
         lblPic.setIcon(new javax.swing.ImageIcon(getClass().getResource("/1.png"))); // NOI18N

@@ -12,6 +12,7 @@ public class HangmanClient extends JFrame {
     private static Hangman hangman;
     private MainPanel mainPanel;
     private Processor processor;
+    private String playerName;
 
     public HangmanClient() {
         bootFrame();
@@ -37,8 +38,10 @@ public class HangmanClient extends JFrame {
                 String name = JOptionPane.showInputDialog("Please enter your name!");
 
                 if (name != null && !name.isEmpty()) {
+                    playerName = name;
                     processor = new Processor();
-                    mainPanel = new MainPanel(processor);
+                    short wordLength = processor.startAndGetLength();
+                    mainPanel = new MainPanel(processor, wordLength);
                     add(mainPanel);
                     revalidate();
                     repaint();
@@ -70,17 +73,49 @@ public class HangmanClient extends JFrame {
         }
     }
 
-    public class Processor implements LetterReceiver {
-
-        private String name;
+    private class Processor implements LetterReceiver {
 
         @Override
-        public void getChar(char userChoice) {
-            System.out.println(userChoice);
+        public void getChar(char guess) {
+            short result = hangman.play(HangmanClient.this.playerName, guess);
+            Status status = Status.getByCode(result);
+
+            switch (status){
+                case GAME_OVER:
+                    gameOverAction();
+                    break;
+                case WON_THE_GAME:
+                    wonAction();
+                    break;
+                case NOT_REGISTERED:
+                    notRegisteredAction();
+                    break;
+                case GUESSED_WRONGLY:
+                    guessWronglyAction();
+                    break;
+                case GUESSED_CORRECTLY:
+                    guessCorrectlyAction();
+                    break;
+            }
+
         }
 
-        public void setName(String name) {
-            this.name = name;
+        public void gameOverAction(){}
+        public void wonAction(){}
+        public void notRegisteredAction(){}
+        public void guessWronglyAction(){}
+        public void guessCorrectlyAction(){}
+
+        public short startAndGetLength(){
+            String name = HangmanClient.this.playerName;
+            boolean isStarted = hangman.start(name);
+
+            if(!isStarted){
+                throw new IllegalArgumentException("This username is already present");
+            }
+
+            return hangman.length(name);
+
         }
     }
 }

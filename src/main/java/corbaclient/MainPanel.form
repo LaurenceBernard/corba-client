@@ -50,6 +50,9 @@
     <Component class="corbaclient.NumberPanel" name="numberPanel">
     </Component>
     <Component class="corbaclient.GuessPanel" name="guessPanel">
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new corbaclient.GuessPanel(wordLength)"/>
+      </AuxValues>
     </Component>
     <Component class="javax.swing.JLabel" name="lblPic">
       <Properties>
