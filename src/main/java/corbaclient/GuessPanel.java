@@ -5,7 +5,7 @@ import java.awt.*;
 
 public class GuessPanel extends JPanel {
 
-    JLabel[] guesses;
+    private JLabel[] guesses;
 
 
     public GuessPanel() {
@@ -26,17 +26,19 @@ public class GuessPanel extends JPanel {
         }
     }
 
-//    public static void main(String[] args) {
-//        JFrame f = new JFrame();
-//
-//        f.add(new GuessPanel());
-//        //f.setComponentOrientation(null);
-//        f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//        f.setSize(200, 100);
-//        f.setVisible(true);
-//    }
+    public void guessedWord(String guessedWord) {
+        char[] guessedCharArray = guessedWord.toCharArray();
+        for (int i = 0; i < guesses.length; i++) {
 
-    public JLabel[] getGuesses() {
-        return guesses;
+            if (guessedCharArray[i] == 0) {
+                guesses[i].setText("<HTML><U>?</U></HTML>");
+            } else {
+                guesses[i].setText(String.format("<HTML><U>%c</U></HTML>", guessedCharArray[i]));
+            }
+
+            guesses[i].setFont(new Font("Serif", Font.PLAIN, 30));
+        }
     }
+
+
 }

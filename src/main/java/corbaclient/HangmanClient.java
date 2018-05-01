@@ -81,30 +81,56 @@ public class HangmanClient extends JFrame {
             Status status = Status.getByCode(result);
 
             switch (status){
-                case GAME_OVER:
-                    gameOverAction();
-                    break;
-                case WON_THE_GAME:
-                    wonAction();
-                    break;
                 case NOT_REGISTERED:
                     notRegisteredAction();
                     break;
+
+                case GUESSED_CORRECTLY:
+                    guessCorrectlyAction();
+                    break;
+
                 case GUESSED_WRONGLY:
                     guessWronglyAction();
                     break;
-                case GUESSED_CORRECTLY:
-                    guessCorrectlyAction();
+
+                case WON_THE_GAME:
+                    wonAction();
+                    break;
+
+                case GAME_OVER:
+                    gameOverAction();
                     break;
             }
 
         }
 
-        public void gameOverAction(){}
-        public void wonAction(){}
-        public void notRegisteredAction(){}
-        public void guessWronglyAction(){}
-        public void guessCorrectlyAction(){}
+        public void notRegisteredAction(){
+
+        }
+
+        public void guessCorrectlyAction(){
+            GuessPanel guessPanel = HangmanClient.this.mainPanel.getGuessPanel();
+            String guessedWord = hangman.guessedWord(HangmanClient.this.playerName);
+            guessPanel.guessedWord(guessedWord);
+
+            ButtonPanel buttonPanel = HangmanClient.this.mainPanel.getButtonPanel();
+            JButton currentButton = buttonPanel.getCurrentPressedButton();
+            currentButton.setText(currentButton.getText() + " ✓");
+        }
+
+        public void guessWronglyAction(){
+            ButtonPanel buttonPanel = HangmanClient.this.mainPanel.getButtonPanel();
+            JButton currentButton = buttonPanel.getCurrentPressedButton();
+            currentButton.setText(currentButton.getText() + " ✗");
+        }
+
+        public void wonAction(){
+
+        }
+
+        public void gameOverAction(){
+
+        }
 
         public short startAndGetLength(){
             String name = HangmanClient.this.playerName;

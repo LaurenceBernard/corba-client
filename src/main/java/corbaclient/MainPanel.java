@@ -25,7 +25,7 @@ public class MainPanel extends javax.swing.JPanel {
     public MainPanel(LetterReceiver letterReceiver, short wordLength){
         this.wordLength = wordLength;
         initComponents();
-        numberPanel.setLetterReceiver(letterReceiver);
+        buttonPanel.setLetterReceiver(letterReceiver);
     }
 
     /**
@@ -37,9 +37,9 @@ public class MainPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        numberPanel = new corbaclient.NumberPanel();
         guessPanel = new corbaclient.GuessPanel(wordLength);
         lblPic = new javax.swing.JLabel();
+        buttonPanel = new corbaclient.ButtonPanel();
 
         lblPic.setIcon(new javax.swing.ImageIcon(getClass().getResource("/1.png"))); // NOI18N
 
@@ -50,23 +50,22 @@ public class MainPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(numberPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(buttonPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(guessPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(lblPic, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addComponent(lblPic, javax.swing.GroupLayout.PREFERRED_SIZE, 274, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(27, 27, 27)
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(guessPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lblPic, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
-                .addComponent(numberPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblPic, javax.swing.GroupLayout.DEFAULT_SIZE, 323, Short.MAX_VALUE)
+                    .addComponent(guessPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(buttonPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -80,13 +79,13 @@ public class MainPanel extends javax.swing.JPanel {
         return lblPic;
     }
 
-    public NumberPanel getNumberPanel() {
-        return numberPanel;
+    public ButtonPanel getButtonPanel() {
+        return buttonPanel;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private corbaclient.ButtonPanel buttonPanel;
     private corbaclient.GuessPanel guessPanel;
     private javax.swing.JLabel lblPic;
-    private corbaclient.NumberPanel numberPanel;
     // End of variables declaration//GEN-END:variables
 }

@@ -5,12 +5,13 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class NumberPanel extends JPanel implements ActionListener {
+public class ButtonPanel extends JPanel implements ActionListener {
     private LetterReceiver letterReceiver;
     private char[] alphabet = "abcdefghijklmnopqrstuvwxyz".toCharArray();
     private JButton[] btns = new JButton[alphabet.length];
+    private JButton currentPressedButton;
 
-    public NumberPanel() {
+    public ButtonPanel() {
         setLayout(new GridLayout(0, 7));
 
         for (int i = 0; i < btns.length; i++) {
@@ -28,6 +29,7 @@ public class NumberPanel extends JPanel implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         JButton clickedBtn = (JButton) e.getSource();
         char btnChar = clickedBtn.getText().charAt(0);
+        currentPressedButton = clickedBtn;
         clickedBtn.setEnabled(false);
         if(letterReceiver != null){
             letterReceiver.getChar(btnChar);
@@ -38,13 +40,8 @@ public class NumberPanel extends JPanel implements ActionListener {
         this.letterReceiver = letterReceiver;
     }
 
-//    public static void main(String[] args) {
-//        JFrame f = new JFrame();
-//
-//        f.add(new NumberPanel());
-//        //f.setComponentOrientation(null);
-//        f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//        f.setSize(400, 200);
-//        f.setVisible(true);
-//    }
+    public JButton getCurrentPressedButton() {
+        return currentPressedButton;
+    }
+
 }
