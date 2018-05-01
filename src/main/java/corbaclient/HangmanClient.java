@@ -38,6 +38,7 @@ public class HangmanClient extends JFrame {
 
                 if (name != null && !name.isEmpty()) {
                     playerName = name;
+                    setTitle(String.format("Hi %s !!!", name));
                     processor = new Processor();
                     short wordLength = processor.startAndGetLength();
                     mainPanel = new MainPanel(processor, wordLength);
@@ -89,10 +90,12 @@ public class HangmanClient extends JFrame {
                     break;
 
                 case GUESSED_WRONGLY:
+
                     guessWronglyAction();
                     break;
 
                 case WON_THE_GAME:
+                    guessCorrectlyAction();
                     wonAction();
                     break;
 
@@ -126,6 +129,9 @@ public class HangmanClient extends JFrame {
         }
 
         public void wonAction() {
+            int answer = JOptionPane.showOptionDialog(HangmanClient.this, "Do You want to repeat the game again ?","WoooooooA WINNER" ,JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE, null, null, null);
+            if(answer == 1)
+                System.exit(0);
             HangmanClient.this.mainPanel.resetPic();
             HangmanClient.this.mainPanel.getButtonPanel().resetButtons();
             short wordLength = startAndGetLength();
