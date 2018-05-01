@@ -13,17 +13,7 @@ public class GuessPanel extends JPanel {
     }
 
     public GuessPanel(int wordLength) {
-        guesses = new JLabel[wordLength];
-        setLayout(new GridLayout(0, wordLength));
-
-        for (int i = 0; i < guesses.length; i++) {
-            guesses[i] = new JLabel();
-            JLabel lbl = guesses[i];
-            lbl.setText("<HTML><U>?</U></HTML>");
-            lbl.setFont(new Font("Serif", Font.PLAIN, 30));
-            add(lbl);
-
-        }
+        resetJLabels(wordLength);
     }
 
     public void guessedWord(String guessedWord) {
@@ -41,4 +31,18 @@ public class GuessPanel extends JPanel {
     }
 
 
+    public void resetJLabels(int wordLength){
+        removeAll();
+        guesses = new JLabel[wordLength];
+        setLayout(new GridLayout(0, wordLength));
+
+        for (int i = 0; i < guesses.length; i++) {
+            guesses[i] = new JLabel();
+            JLabel lbl = guesses[i];
+            lbl.setText("<HTML><U>?</U></HTML>");
+            lbl.setFont(new Font("Serif", Font.PLAIN, 30));
+            add(lbl);
+
+        }
+    }
 }

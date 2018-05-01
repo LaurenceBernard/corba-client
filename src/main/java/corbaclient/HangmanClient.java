@@ -19,7 +19,6 @@ public class HangmanClient extends JFrame {
     }
 
     public static void main(String[] args) {
-
         bootCorbaContext(args);
 
         //Boot The UI
@@ -80,7 +79,7 @@ public class HangmanClient extends JFrame {
             short result = hangman.play(HangmanClient.this.playerName, guess);
             Status status = Status.getByCode(result);
 
-            switch (status){
+            switch (status) {
                 case NOT_REGISTERED:
                     notRegisteredAction();
                     break;
@@ -98,17 +97,18 @@ public class HangmanClient extends JFrame {
                     break;
 
                 case GAME_OVER:
+                    guessWronglyAction();
                     gameOverAction();
                     break;
             }
 
         }
 
-        public void notRegisteredAction(){
+        public void notRegisteredAction() {
 
         }
 
-        public void guessCorrectlyAction(){
+        public void guessCorrectlyAction() {
             GuessPanel guessPanel = HangmanClient.this.mainPanel.getGuessPanel();
             String guessedWord = hangman.guessedWord(HangmanClient.this.playerName);
             guessPanel.guessedWord(guessedWord);
@@ -118,25 +118,36 @@ public class HangmanClient extends JFrame {
             currentButton.setText(currentButton.getText() + " ✓");
         }
 
-        public void guessWronglyAction(){
+        public void guessWronglyAction() {
             ButtonPanel buttonPanel = HangmanClient.this.mainPanel.getButtonPanel();
             JButton currentButton = buttonPanel.getCurrentPressedButton();
             currentButton.setText(currentButton.getText() + " ✗");
+            HangmanClient.this.mainPanel.changePic();
         }
 
-        public void wonAction(){
-
+        public void wonAction() {
+            HangmanClient.this.mainPanel.resetPic();
+            HangmanClient.this.mainPanel.getButtonPanel().resetButtons();
+            short wordLength = startAndGetLength();
+            HangmanClient.this.mainPanel.getGuessPanel().resetJLabels(wordLength);
         }
 
-        public void gameOverAction(){
+        public void gameOverAction() {
+            int answer = JOptionPane.showOptionDialog(HangmanClient.this, "Do You want to repeat the game again ?","GAME OVER" ,JOptionPane.YES_NO_OPTION, JOptionPane.ERROR_MESSAGE, null, null, null);
+            if(answer == 1)
+                System.exit(0);
 
+            HangmanClient.this.mainPanel.resetPic();
+            HangmanClient.this.mainPanel.getButtonPanel().resetButtons();
+            short wordLength = startAndGetLength();
+            HangmanClient.this.mainPanel.getGuessPanel().resetJLabels(wordLength);
         }
 
-        public short startAndGetLength(){
+        public short startAndGetLength() {
             String name = HangmanClient.this.playerName;
             boolean isStarted = hangman.start(name);
 
-            if(!isStarted){
+            if (!isStarted) {
                 throw new IllegalArgumentException("This username is already present");
             }
 

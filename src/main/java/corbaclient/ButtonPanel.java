@@ -44,4 +44,11 @@ public class ButtonPanel extends JPanel implements ActionListener {
         return currentPressedButton;
     }
 
+    public void resetButtons(){
+        for (int i = 0; i < btns.length; i++) {
+            JButton btn = btns[i];
+            btn.setEnabled(true);
+            btn.setText(String.valueOf(alphabet[i]));
+        }
+    }
 }
