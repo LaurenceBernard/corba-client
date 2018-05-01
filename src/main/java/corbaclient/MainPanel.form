@@ -19,11 +19,11 @@
           <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="numberPanel1" max="32767" attributes="0"/>
+                  <Component id="numberPanel" max="32767" attributes="0"/>
                   <Group type="102" attributes="0">
-                      <Component id="guessPanel1" min="-2" pref="255" max="-2" attributes="0"/>
+                      <Component id="guessPanel" min="-2" pref="255" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="jLabel1" min="-2" pref="274" max="-2" attributes="0"/>
+                      <Component id="lblPic" min="-2" pref="274" max="-2" attributes="0"/>
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
               </Group>
@@ -36,22 +36,22 @@
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="guessPanel1" max="32767" attributes="0"/>
-                  <Component id="jLabel1" max="32767" attributes="0"/>
+                  <Component id="guessPanel" max="32767" attributes="0"/>
+                  <Component id="lblPic" max="32767" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="numberPanel1" min="-2" max="-2" attributes="0"/>
+              <Component id="numberPanel" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="corbaclient.NumberPanel" name="numberPanel1">
+    <Component class="corbaclient.NumberPanel" name="numberPanel">
     </Component>
-    <Component class="corbaclient.GuessPanel" name="guessPanel1">
+    <Component class="corbaclient.GuessPanel" name="guessPanel">
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel1">
+    <Component class="javax.swing.JLabel" name="lblPic">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/1.png"/>

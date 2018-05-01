@@ -17,11 +17,8 @@ public class GuessPanel extends JPanel {
         setLayout(new GridLayout(0, wordLength));
 
         for (int i = 0; i < guesses.length; i++) {
-
             guesses[i] = new JLabel();
             JLabel lbl = guesses[i];
-
-
             lbl.setText("<HTML><U>?</U></HTML>");
             lbl.setFont(new Font("Serif", Font.PLAIN, 30));
             add(lbl);
@@ -29,13 +26,17 @@ public class GuessPanel extends JPanel {
         }
     }
 
-    public static void main(String[] args) {
-        JFrame f = new JFrame();
+//    public static void main(String[] args) {
+//        JFrame f = new JFrame();
+//
+//        f.add(new GuessPanel());
+//        //f.setComponentOrientation(null);
+//        f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//        f.setSize(200, 100);
+//        f.setVisible(true);
+//    }
 
-        f.add(new GuessPanel());
-        //f.setComponentOrientation(null);
-        f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        f.setSize(200, 100);
-        f.setVisible(true);
+    public JLabel[] getGuesses() {
+        return guesses;
     }
 }
